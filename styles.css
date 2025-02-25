@@ -1,0 +1,273 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #333;
+    overflow: hidden;
+    touch-action: none;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+#game-container {
+    position: relative;
+    flex-grow: 1;
+    overflow: hidden;
+    perspective: 1000px;
+    background: linear-gradient(to bottom, #87CEEB, #E0F7FF);
+}
+
+#world {
+    position: absolute;
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+    transform: rotateX(20deg);
+    transition: transform 0.1s ease;
+}
+
+.block {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    image-rendering: pixelated;
+}
+
+.top {
+    transform: translateY(-25px) rotateX(90deg);
+}
+
+.bottom {
+    transform: translateY(25px) rotateX(-90deg);
+}
+
+.front {
+    transform: translateZ(25px);
+}
+
+.back {
+    transform: translateZ(-25px) rotateY(180deg);
+}
+
+.left {
+    transform: translateX(-25px) rotateY(-90deg);
+}
+
+.right {
+    transform: translateX(25px) rotateY(90deg);
+}
+
+/* Tipos de bloques */
+.grass .top {
+    background-color: #7CFC00;
+}
+.grass .side {
+    background-color: #8B4513;
+}
+
+.dirt .face {
+    background-color: #8B4513;
+}
+
+.stone .face {
+    background-color: #808080;
+}
+
+.wood .face {
+    background-color: #A0522D;
+}
+
+.water .face {
+    background-color: rgba(0, 0, 255, 0.5);
+}
+
+.leaves .face {
+    background-color: #228B22;
+}
+
+#inventory {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: #555;
+}
+
+.inventory-item {
+    width: 50px;
+    height: 50px;
+    margin: 0 5px;
+    border: 2px solid #777;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.inventory-item.selected {
+    border: 2px solid white;
+}
+
+.inventory-item-inner {
+    width: 80%;
+    height: 80%;
+}
+
+#controls {
+    position: absolute;
+    bottom: 100px;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 10;
+}
+
+.control-row {
+    display: flex;
+    gap: 10px;
+}
+
+.control-btn {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    border: 2px solid #333;
+    opacity: 0.8;
+}
+
+#action-buttons {
+    position: absolute;
+    bottom: 100px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 10;
+}
+
+.mode-btn {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    border: 2px solid #333;
+    opacity: 0.8;
+}
+
+#instructions {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 300px;
+    font-size: 14px;
+    z-index: 5;
+}
+
+#start-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+    color: white;
+}
+
+#start-screen h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
+#start-screen p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    text-align: center;
+}
+
+#start-btn {
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    background-color: #5b9c3b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    #controls, #action-buttons {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .block {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .top {
+        transform: translateY(-20px) rotateX(90deg);
+    }
+    
+    .bottom {
+        transform: translateY(20px) rotateX(-90deg);
+    }
+    
+    .front {
+        transform: translateZ(20px);
+    }
+    
+    .back {
+        transform: translateZ(-20px) rotateY(180deg);
+    }
+    
+    .left {
+        transform: translateX(-20px) rotateY(-90deg);
+    }
+    
+    .right {
+        transform: translateX(20px) rotateY(90deg);
+    }
+
+    .inventory-item {
+        width: 40px;
+        height: 40px;
+    }
+}

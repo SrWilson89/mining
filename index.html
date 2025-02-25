@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiniCraft - Juego estilo Minecraft</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="world"></div>
+        
+        <div id="instructions">
+            <p>PC: Mouse para orientar, WASD para mover, Click Izq. para romper, Click Der. para colocar</p>
+            <p>Móvil: Botones para mover, P/B para colocar/romper bloques</p>
+        </div>
+        
+        <div id="controls">
+            <div class="control-row">
+                <div class="control-btn" id="forward-btn">W</div>
+            </div>
+            <div class="control-row">
+                <div class="control-btn" id="left-btn">A</div>
+                <div class="control-btn" id="backward-btn">S</div>
+                <div class="control-btn" id="right-btn">D</div>
+            </div>
+        </div>
+        
+        <div id="action-buttons">
+            <div class="mode-btn" id="place-btn">P</div>
+            <div class="mode-btn" id="break-btn">B</div>
+        </div>
+        
+        <div id="start-screen">
+            <h1>MiniCraft</h1>
+            <p>Construye tu propio mundo con diferentes bloques. Haz click en los bloques para romperlos o colocar nuevos.</p>
+            <button id="start-btn">¡Comenzar a Jugar!</button>
+        </div>
+    </div>
+    
+    <div id="inventory"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
